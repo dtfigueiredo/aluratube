@@ -6,6 +6,7 @@ import { ThemeToggleState } from '../../Atoms'
 
 export default function Switch() {
   const [theme, setTheme] = useRecoilState(ThemeToggleState)
+  console.log(theme)
 
   //useEffect para não quebrar a dom devido ao serverSide rendering do next
   useEffect(() => {

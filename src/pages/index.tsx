@@ -13,9 +13,11 @@ import { THEME } from '../styles/theme'
 
 export default function App() {
   const userTheme = useRecoilValue(ThemeToggleState)
+  const activeTheme: any = THEME[userTheme]
+  console.log('activeTheme:', activeTheme)
 
   return (
-    <ThemeProvider theme={THEME[userTheme]}>
+    <ThemeProvider theme={activeTheme}>
       <Modal />
 
       <AddButton />
