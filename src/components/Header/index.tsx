@@ -29,7 +29,7 @@ export default function Header({ github, name, job, banner }: profileProps) {
               onChange={(e) => setInputSearch(e.target.value)}
             />
             <button onClick={() => console.log(inputSearch)}>
-              <VscSearch />
+              <VscSearch size={20} />
             </button>
           </div>
 

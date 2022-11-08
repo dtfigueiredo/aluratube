@@ -10,6 +10,10 @@ export const StyledHeader = styled.header`
     width: 100%;
     height: 400px;
     object-fit: cover;
+
+    @media screen and (max-width: 767px) {
+      height: 300px;
+    }
   }
 `
 
@@ -21,6 +25,7 @@ export const StyleHeaderSection = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 
     .logo {
       width: 100%;
@@ -31,11 +36,23 @@ export const StyleHeaderSection = styled.section`
     }
 
     .input-box {
-      width: 425px;
+      flex: 1;
+      width: 100%;
+      max-width: 425px;
       display: flex;
+
+      @media screen and (max-width: 599px) {
+        width: 100%;
+      }
+
       input {
         flex: 1;
+        width: 100%;
         padding: 0.5rem 1rem;
+
+        @media screen and (max-width: 599px) {
+          padding: 0.25rem 0.25rem;
+        }
       }
 
       button {
@@ -43,6 +60,10 @@ export const StyleHeaderSection = styled.section`
         border: 1px solid #111;
         background-color: #f0f0f0;
         cursor: pointer;
+
+        @media screen and (max-width: 599px) {
+          padding: 0.25rem 0.5rem;
+        }
       }
     }
 

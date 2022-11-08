@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
-export const StyleTimeline = styled.section`
+export const StyledFavorites = styled.section`
   padding: 1rem;
-  background-color: #f9f9f9;
 
-  .playlist-section {
+  .favorite-section {
     margin: 2rem auto;
 
     h2 {
@@ -16,7 +15,7 @@ export const StyleTimeline = styled.section`
     }
   }
 
-  .videos-container {
+  .favorites-container {
     width: 100%;
     flex: 1;
     display: flex;
@@ -24,13 +23,14 @@ export const StyleTimeline = styled.section`
     align-items: center;
     gap: 1rem;
 
-    overflow: hidden;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    @media screen and (max-width: 599px) {
+      overflow: hidden;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+    }
   }
 
-  .video-card {
-    height: 225px;
+  .favorites-card {
     transition: all 300ms ease-in-out;
 
     &:hover {
@@ -39,27 +39,26 @@ export const StyleTimeline = styled.section`
   }
 
   a {
-    width: 210px;
-    height: 185px;
+    width: 150px;
+    height: 150px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
     color: inherit;
-    scroll-snap-align: start;
   }
 
   img {
-    width: 210px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 0.25rem;
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 50%;
   }
 
   span {
-    /* white-space: nowrap; */
-    /* overflow-wrap: break-word; */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+    text-align: center;
+    font-weight: 600;
+    color: #666666;
     line-height: 1.125rem;
   }
 `

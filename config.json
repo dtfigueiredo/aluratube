@@ -2,7 +2,7 @@
   "name": "Daniel Figueiredo",
   "job": "FrontEnd Developer",
   "github": "dtfigueiredo",
-  "banner": "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+  "banner": "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1159&q=80",
   "playlists": {
     "jogos": [
       {
@@ -133,7 +133,22 @@
     ]
   },
   "favorites": {
-    "001": [],
-    "002": []
+    "Aluratubes Favoritos": [
+      {
+        "name": "Jovem Nerd",
+        "url": "https://www.youtube.com/c/JovemNerd",
+        "thumb": "https://yt3.ggpht.com/ytc/AMLnZu9pDOp93R9V0cp_CodoiMk8FM60-46FkdDasQ1i=s88-c-k-c0x00ffffff-no-rj"
+      },
+      {
+        "name": "Rocketseat",
+        "url": "https://www.youtube.com/c/RocketSeat",
+        "thumb": "https://yt3.ggpht.com/ytc/AMLnZu9-n9mDtKOwVMx3_-2zr8H57lHFag5t-0JcJNFPUQ=s88-c-k-c0x00ffffff-no-rj"
+      },
+      {
+        "name": "Mario Souto - Dev Soutinho",
+        "url": "https://www.youtube.com/c/DevSoutinho",
+        "thumb": "https://yt3.ggpht.com/m8Yrqf0Y81L4mZ1Cq7rGnJ4NDHe6729rxiFZvWyy9-xd_Z7Osmza7J8NWpN1axMHcCb1oKJNgA=s88-c-k-c0x00ffffff-no-rj"
+      }
+    ]
   }
 }
