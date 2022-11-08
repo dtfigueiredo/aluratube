@@ -10,12 +10,14 @@ export default function Modal() {
     <>
       {isModalOpen ? (
         <StyledModal>
-          <form>
+          EM CONSTRUÇÃO
+          <button onClick={() => setIsOpen(false)}>SAIR</button>
+          {/* <form>
             <input type='text' />
             <input type='text' />
             <input type='text' />
             <button onClick={() => setIsOpen(false)}>Cadastrar</button>
-          </form>
+          </form> */}
         </StyledModal>
       ) : null}
     </>

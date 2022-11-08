@@ -9,12 +9,13 @@ import Header from '../components/Header'
 import Modal from '../components/Modal'
 import Timeline from '../components/Timeline'
 
-import { THEME } from '../styles/theme'
+import { LIGHT } from '../styles/light'
+import { DARK } from '../styles/dark'
 
 export default function App() {
   const userTheme = useRecoilValue(ThemeToggleState)
-  const activeTheme: any = THEME[userTheme]
-  console.log('activeTheme:', activeTheme)
+
+  const activeTheme = userTheme === 'light' ? LIGHT : DARK
 
   return (
     <ThemeProvider theme={activeTheme}>
