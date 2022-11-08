@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const StyleTimeline = styled.section`
   padding: 1rem;
-  background-color: #f9f9f9;
+  background-color: ${(props) => props.theme.colors.backgroundLevel1};
+  color: ${(props) => props.theme.colors.textColorBase};
 
   .playlist-section {
     margin: 2rem auto;
@@ -44,7 +45,7 @@ export const StyleTimeline = styled.section`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    color: inherit;
+    color: ${(props) => props.theme.colors.textColorLevel1};
     scroll-snap-align: start;
   }
 

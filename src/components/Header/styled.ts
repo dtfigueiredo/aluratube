@@ -4,6 +4,8 @@ export const StyledHeader = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: ${(props) => props.theme.colors.backgroundBase};
+  color: ${(props) => props.theme.colors.textColorBase};
 
   .banner {
     display: block;
@@ -49,6 +51,7 @@ export const StyleHeaderSection = styled.section`
         flex: 1;
         width: 100%;
         padding: 0.5rem 1rem;
+        outline: none;
 
         @media screen and (max-width: 599px) {
           padding: 0.25rem 0.25rem;
@@ -57,8 +60,10 @@ export const StyleHeaderSection = styled.section`
 
       button {
         padding: 0.5rem 1.25rem;
-        border: 1px solid #111;
-        background-color: #f0f0f0;
+        border: 1px solid;
+        border-color: ${(props) => props.theme.colors.borderLevel1};
+        background-color: ${(props) => props.theme.colors.backgroundLevel2};
+
         cursor: pointer;
 
         @media screen and (max-width: 599px) {
@@ -101,7 +106,7 @@ export const StyleHeaderSection = styled.section`
 
     p {
       line-height: 1.125rem;
-      color: #666666;
+      color: ${(props) => props.theme.colors.textColorLevel1};
     }
   }
 `

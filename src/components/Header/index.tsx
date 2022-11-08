@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import SearchBar from '../Common/SearchBar'
 import { StyledHeader, StyleHeaderSection } from './styled'
-import { VscSearch } from 'react-icons/vsc'
 
 interface profileProps {
   github: string
@@ -9,31 +8,28 @@ interface profileProps {
   banner: string
 }
 
-export default function Header({ github, name, job, banner }: profileProps) {
-  const [inputSearch, setInputSearch] = useState('')
+const Logo = () => {
+  return (
+    <img
+      className='logo'
+      src='logo-searchbar.png'
+      alt='Logotipo Aluratube'
+    />
+  )
+}
 
+const Switch = () => {
+  return <div className='switch'></div>
+}
+
+export default function Header({ github, name, job, banner }: profileProps) {
   return (
     <StyledHeader>
       <StyleHeaderSection>
         <div className='menu-bar'>
-          <img
-            className='logo'
-            src='logo-searchbar.png'
-            alt='Logotipo Aluratube'
-          />
-
-          <div className='input-box'>
-            <input
-              type='text'
-              value={inputSearch}
-              onChange={(e) => setInputSearch(e.target.value)}
-            />
-            <button onClick={() => console.log(inputSearch)}>
-              <VscSearch size={20} />
-            </button>
-          </div>
-
-          <div className='switch'></div>
+          <Logo />
+          <SearchBar />
+          <Switch />
         </div>
       </StyleHeaderSection>
 

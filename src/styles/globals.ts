@@ -86,6 +86,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
+    position: relative;
     font-family: sans-serif;
   }
 
@@ -94,8 +95,7 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     opacity: 1;
     transition: all 300ms ease-in-out;
-    &:hover,
-    &:focus {
+    &:hover {
       opacity: .5;
     }
   }

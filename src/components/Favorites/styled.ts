@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export const StyledFavorites = styled.section`
   padding: 1rem;
+  background-color: ${(props) => props.theme.colors.backgroundBase};
+  color: ${(props) => props.theme.colors.textColorBase};
 
   .favorite-section {
     margin: 2rem auto;
@@ -46,7 +48,7 @@ export const StyledFavorites = styled.section`
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
-    color: inherit;
+    color: ${(props) => props.theme.colors.textColorLevel1};
   }
 
   img {
@@ -58,7 +60,7 @@ export const StyledFavorites = styled.section`
   span {
     text-align: center;
     font-weight: 600;
-    color: #666666;
+    color: ${(props) => props.theme.colors.textColorLevel1};
     line-height: 1.125rem;
   }
 `
