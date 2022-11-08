@@ -9,3 +9,8 @@ export const SearchBarInputState = atom<string>({
   key: 'searchBarInputState',
   default: '',
 })
+
+export const ThemeToggleState = atom<string>({
+  key: 'themeToggleState',
+  default: 'light',
+})

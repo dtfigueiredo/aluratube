@@ -14,7 +14,7 @@ export default function SearchBar() {
         onChange={(e) => setInputSearch(e.target.value)}
       />
       <button onClick={() => console.log(inputSearch)}>
-        <VscSearch size={20} />
+        <VscSearch />
       </button>
     </div>
   )

@@ -4,7 +4,7 @@ export const DARK = {
     backgroundLevel1: '#181818',
     backgroundLevel2: '#313131',
     borderBase: '#383838',
-    borderLevel1: '#121212',
+    borderLevel1: '#383838',
     textColorBase: '#eeeeee',
     textColorLevel1: '#cccccc',
     red: '#ea3323',

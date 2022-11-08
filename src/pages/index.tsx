@@ -1,13 +1,21 @@
+import { useRecoilValue } from 'recoil'
+import { ThemeProvider } from 'styled-components'
+
 import profileConfig from '../../config.json'
+import { ThemeToggleState } from '../Atoms'
 import AddButton from '../components/AddButton'
 import Favorites from '../components/Favorites'
 import Header from '../components/Header'
 import Modal from '../components/Modal'
 import Timeline from '../components/Timeline'
 
+import { THEME } from '../styles/theme'
+
 export default function App() {
+  const userTheme = useRecoilValue(ThemeToggleState)
+
   return (
-    <>
+    <ThemeProvider theme={THEME[userTheme]}>
       <Modal />
 
       <AddButton />
@@ -22,6 +30,6 @@ export default function App() {
       <Timeline playlists={profileConfig.playlists} />
 
       <Favorites favorites={profileConfig.favorites} />
-    </>
+    </ThemeProvider>
   )
 }

@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
     object-fit: cover;
 
     @media screen and (max-width: 767px) {
-      height: 300px;
+      height: 230px;
     }
   }
 `
@@ -28,6 +28,10 @@ export const StyleHeaderSection = styled.section`
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+
+    .text {
+      fill: ${(props) => props.theme.colors.textColorBase};
+    }
 
     .logo {
       width: 100%;
@@ -43,6 +47,7 @@ export const StyleHeaderSection = styled.section`
       max-width: 425px;
       display: flex;
 
+      font-size: 1.25rem;
       @media screen and (max-width: 599px) {
         width: 100%;
       }
@@ -52,7 +57,11 @@ export const StyleHeaderSection = styled.section`
         width: 100%;
         padding: 0.5rem 1rem;
         outline: none;
-
+        border: 1px solid;
+        border-color: ${(props) => props.theme.colors.borderBase};
+        caret-color: ${(props) => props.theme.colors.textColorBase};
+        color: ${(props) => props.theme.colors.textColorLevel1};
+        background-color: ${(props) => props.theme.colors.backgroundLevel1};
         @media screen and (max-width: 599px) {
           padding: 0.25rem 0.25rem;
         }
@@ -61,7 +70,8 @@ export const StyleHeaderSection = styled.section`
       button {
         padding: 0.5rem 1.25rem;
         border: 1px solid;
-        border-color: ${(props) => props.theme.colors.borderLevel1};
+        color: ${(props) => props.theme.colors.textColorBase};
+        border-color: ${(props) => props.theme.colors.borderBase};
         background-color: ${(props) => props.theme.colors.backgroundLevel2};
 
         cursor: pointer;
@@ -73,14 +83,17 @@ export const StyleHeaderSection = styled.section`
     }
 
     .switch {
-      width: 50px;
-      height: 25px;
-      background-color: #121212;
+      font-size: 3rem;
+      color: ${(props) => props.theme.colors.textColorBase};
       cursor: pointer;
       transition: all 300ms ease-in-out;
 
       &:hover {
-        background-color: #212121;
+        transform: scale(1.05);
+      }
+
+      @media screen and (max-width: 599px) {
+        font-size: 2.5rem;
       }
     }
   }

@@ -1,4 +1,6 @@
+import Logo from '../Common/Logo'
 import SearchBar from '../Common/SearchBar'
+import Switch from '../Common/Switch'
 import { StyledHeader, StyleHeaderSection } from './styled'
 
 interface profileProps {
@@ -6,20 +8,6 @@ interface profileProps {
   name: string
   job: string
   banner: string
-}
-
-const Logo = () => {
-  return (
-    <img
-      className='logo'
-      src='logo-searchbar.png'
-      alt='Logotipo Aluratube'
-    />
-  )
-}
-
-const Switch = () => {
-  return <div className='switch'></div>
 }
 
 export default function Header({ github, name, job, banner }: profileProps) {
