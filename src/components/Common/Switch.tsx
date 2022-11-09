@@ -11,7 +11,7 @@ export default function Switch() {
   useEffect(() => {
     const initialTheme: string = localStorage.getItem('userTheme') as string
     setTheme(initialTheme)
-  }, [])
+  }, [theme])
 
   const handleTheme = () => {
     if (theme === 'light') {
