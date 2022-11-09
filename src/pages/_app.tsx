@@ -1,5 +1,4 @@
 import { RecoilRoot } from 'recoil'
-import { ThemeProvider } from 'styled-components'
 
 import { GlobalStyle } from '../styles/globals'
 
