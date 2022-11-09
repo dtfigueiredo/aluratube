@@ -1,3 +1,4 @@
+import Banner from '../Common/Banner'
 import Logo from '../Common/Logo'
 import SearchBar from '../Common/SearchBar'
 import Switch from '../Common/Switch'
@@ -21,11 +22,7 @@ export default function Header({ github, name, job, banner }: profileProps) {
         </div>
       </StyleHeaderSection>
 
-      <img
-        className='banner'
-        src={banner}
-        alt='Banner'
-      />
+      <Banner url={banner} />
 
       <StyleHeaderSection>
         <div className='profile-info'>

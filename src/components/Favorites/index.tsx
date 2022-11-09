@@ -1,4 +1,11 @@
+import FavoriteChannelCard from '../Common/FavoriteChannelCard'
 import { StyledFavorites } from './styled'
+
+interface FavoriteChannelProps {
+  url: string
+  thumb: string
+  name: string
+}
 
 export default function Favorites({ favorites }: any) {
   const favoriteName: string[] = Object.keys(favorites)
@@ -15,22 +22,14 @@ export default function Favorites({ favorites }: any) {
             className='favorite-section'>
             <h2>{title}</h2>
             <div className='favorites-container'>
-              {channels.map((c: any) => {
+              {channels.map((c: FavoriteChannelProps) => {
                 return (
-                  <div
+                  <FavoriteChannelCard
                     key={c.url}
-                    className='favorites-card'>
-                    <a
-                      href={c.url}
-                      target='_blank'
-                      rel='noreferrer'>
-                      <img
-                        src={c.thumb}
-                        alt='Thumbnail do video'
-                      />
-                      <span>{c.name}</span>
-                    </a>
-                  </div>
+                    url={c.url}
+                    name={c.name}
+                    thumb={c.thumb}
+                  />
                 )
               })}
             </div>
