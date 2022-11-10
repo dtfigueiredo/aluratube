@@ -10,15 +10,15 @@ interface VideoProps {
   title: string
 }
 
-interface PlaylistProps {
-  [key: string]: [
-    {
-      title: string
-      url: string
-      thumb: string
-    }
-  ]
-}
+// interface PlaylistProps {
+//   [key: string]: [
+//     {
+//       title: string
+//       url: string
+//       thumb: string
+//     }
+//   ]
+// }
 
 export default function Timeline({ playlists }: any) {
   const playlistNames = Object.keys(playlists)

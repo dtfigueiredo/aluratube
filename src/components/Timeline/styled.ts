@@ -28,6 +28,29 @@ export const StyleTimeline = styled.section`
     overflow: hidden;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
+
+    ::-webkit-scrollbar {
+      height: 0.75rem;
+      width: 0.75rem;
+      background: #99999935;
+    }
+    ::-webkit-scrollbar-thumb:horizontal {
+      background-color: ${(props) => props.theme.colors.textColorLevel1};
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width: 425px) {
+      ::-webkit-scrollbar {
+        height: 0.25rem;
+        width: 0.25rem;
+        background: #99999935;
+      }
+      ::-webkit-scrollbar-thumb:horizontal {
+        background-color: ${(props) => props.theme.colors.textColorLevel1};
+        /* background: #121212; */
+        border-radius: 10px;
+      }
+    }
   }
 
   .video-card {
