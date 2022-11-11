@@ -13,7 +13,7 @@ export default function SearchBar() {
         value={inputSearch}
         onChange={(e) => setInputSearch(e.target.value)}
       />
-      <button onClick={() => console.log(inputSearch)}>
+      <button>
         <VscSearch />
       </button>
     </div>

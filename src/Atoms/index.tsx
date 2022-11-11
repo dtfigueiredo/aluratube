@@ -14,3 +14,21 @@ export const ThemeToggleState = atom<string>({
   key: 'themeToggleState',
   default: 'light',
 })
+
+interface ModalFormProps {
+  title: string
+  url: string
+}
+
+export const ModalFormState = atom<ModalFormProps>({
+  key: 'modalFormState',
+  default: {
+    title: '',
+    url: '',
+  },
+})
+
+export const ThumbnailKeyState = atom<string>({
+  key: 'thumbnailState',
+  default: '',
+})

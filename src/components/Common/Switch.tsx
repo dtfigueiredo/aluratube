@@ -13,18 +13,16 @@ export default function Switch() {
     console.log('tema from storage: ', initialTheme)
     console.log(window.localStorage)
     setTheme(initialTheme)
-  }, [theme])
+  }, [setTheme])
 
   const handleTheme = () => {
     if (theme === 'light') {
       setTheme('dark')
       localStorage.setItem('userTheme', 'dark')
-      console.log('trocou tema')
     }
     if (theme === 'dark') {
       setTheme('light')
       localStorage.setItem('userTheme', 'light')
-      console.log('trocou tema')
     }
   }
 
