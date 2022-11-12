@@ -9,7 +9,6 @@ import { StyledModal } from './styled'
 
 export default function Modal() {
   const [isOpen, setIsOpen] = useRecoilState(ModalState)
-  // const [formValues, setFormValues] = useRecoilState(ModalFormState)
   const [thumbnailKey, setThumbnailKey] = useRecoilState(ThumbnailKeyState)
 
   //validationSchema
@@ -24,30 +23,11 @@ export default function Modal() {
     if (e.target.id !== 'backdrop') return
     setIsOpen(false)
     setThumbnailKey('')
-    // setFormValues({
-    //   title: '',
-    //   url: '',
-    // })
   }
   const handleCloseModalClick = () => {
     setIsOpen(false)
     setThumbnailKey('')
-    // setFormValues({
-    //   title: '',
-    //   url: '',
-    // })
   }
-
-  //handleSubmit
-  // const handleOnSubmit = (e: any) => {
-  //   e.preventDefault()
-  //   console.log(formValues)
-  //   setFormValues({
-  //     title: '',
-  //     url: '',
-  //   })
-  //   setThumbnailKey('')
-  // }
 
   //useEffect para adicionar listener e fechar o modal com o 'ESC'
   useEffect(() => {
@@ -79,8 +59,7 @@ export default function Modal() {
           <Formik
             validationSchema={validationSchema}
             onSubmit={(values) => {
-              alert(values)
-              setThumbnailKey('')
+              console.log(values)
             }}
             initialValues={{
               title: '',
@@ -89,11 +68,7 @@ export default function Modal() {
             }}>
             {(props) => (
               <form>
-                <span
-                  className='fecharmodal'
-                  onClick={handleCloseModalClick}>
-                  x
-                </span>
+                <span onClick={handleCloseModalClick}>x</span>
 
                 <input
                   name='title'
@@ -117,9 +92,15 @@ export default function Modal() {
                     if (name === 'url') {
                       const [url, key] = e.target.value.split('?v=')
                       url.includes('youtube') ? setThumbnailKey(key) : setThumbnailKey('NotYoutube')
+                      console.log(props.values.thumbnail)
                     }
                   }}
-                  onBlur={props.handleBlur}
+                  onBlur={(e) => {
+                    props.handleBlur(e)
+                    thumbnailKey.length === 11
+                      ? (props.values.thumbnail = `https://img.youtube.com/vi/${thumbnailKey}/hqdefault.jpg`)
+                      : ''
+                  }}
                   type='text'
                   placeholder='URL'
                 />
@@ -136,7 +117,12 @@ export default function Modal() {
                   </div>
                 ) : null}
 
-                <button type='submit'>Cadastrar</button>
+                <button
+                  type='submit'
+                  onClick={() => props.handleSubmit()}
+                  disabled={!props.isValid}>
+                  Cadastrar
+                </button>
               </form>
             )}
           </Formik>

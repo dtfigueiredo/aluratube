@@ -120,6 +120,12 @@ export const StyledModal = styled.section`
       border-radius: 0.25rem;
 
       cursor: pointer;
+
+      &:disabled {
+        background-color: #666;
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
     }
   }
 `
