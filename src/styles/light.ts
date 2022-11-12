@@ -8,5 +8,6 @@ export const LIGHT = {
     textColorBase: '#222222',
     textColorLevel1: '#666666',
     red: '#ea3323',
+    success: '#2a9d8f',
   },
 }

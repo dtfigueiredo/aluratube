@@ -8,5 +8,6 @@ export const DARK = {
     textColorBase: '#eeeeee',
     textColorLevel1: '#cccccc',
     red: '#ea3323',
+    success: '#2a9d8f',
   },
 }

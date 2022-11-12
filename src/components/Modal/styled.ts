@@ -63,12 +63,25 @@ export const StyledModal = styled.section`
         color: ${(props) => props.theme.colors.textColorLevel1};
       }
 
+      &:focus {
+        border: 1px solid;
+        border-color: ${(props) => props.theme.colors.success};
+      }
+
       &:focus-visible {
         ::placeholder {
           color: ${(props) => props.theme.colors.backgroundLevel1};
         }
         outline: none;
       }
+    }
+
+    .error-feedback {
+      align-self: flex-start;
+      padding-left: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: ${(props) => props.theme.colors.red};
     }
 
     div {

@@ -19,7 +19,6 @@ interface ModalFormProps {
   title: string
   url: string
 }
-
 export const ModalFormState = atom<ModalFormProps>({
   key: 'modalFormState',
   default: {
