@@ -9,20 +9,25 @@ export default function Switch() {
 
   //useEffect para não quebrar a dom devido ao serverSide rendering do next
   useEffect(() => {
-    const initialTheme: string = localStorage.getItem('userTheme') as string
-    console.log('tema from storage: ', initialTheme)
-    console.log(window.localStorage)
-    setTheme(initialTheme)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('userTheme', 'dark')
+      const initialTheme: string = localStorage.getItem('userTheme') as string
+      setTheme(initialTheme)
+    }
   }, [setTheme])
 
   const handleTheme = () => {
     if (theme === 'light') {
       setTheme('dark')
-      localStorage.setItem('userTheme', 'dark')
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('userTheme', 'dark')
+      }
     }
     if (theme === 'dark') {
       setTheme('light')
-      localStorage.setItem('userTheme', 'light')
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('userTheme', 'light')
+      }
     }
   }
 
