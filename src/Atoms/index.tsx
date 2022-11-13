@@ -12,7 +12,7 @@ export const SearchBarInputState = atom<string>({
 
 export const ThemeToggleState = atom<string>({
   key: 'themeToggleState',
-  default: 'light',
+  default: '',
 })
 
 interface ModalFormProps {
