@@ -6,12 +6,12 @@ import * as yup from 'yup'
 
 import { ModalState, ThumbnailKeyState } from '../../Atoms'
 import AddButton from '../AddButton'
+import InputBlock from '../InputBLock'
 import { StyledModal } from './styled'
 
 //supabaseClient
 const supabaseUrl = 'https://eoiojeiyljrsrnqjjfcu.supabase.co'
-const supabaseKey =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvaW9qZWl5bGpyc3JucWpqZmN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMDIyOTksImV4cCI6MTk4Mzg3ODI5OX0.iAgXA2REXyK0T47-5fHIIxTU7IkAB1Sc5HowC7pemaY'
+const supabaseKey = process.env.NEXT_PUBLIC_PROJECT_KEY as string
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 export default function Modal() {
@@ -72,7 +72,7 @@ export default function Modal() {
             onSubmit={(values, { resetForm }) => {
               //inserindo no supabase
               supabase
-                .from('video_playlists')
+                .from('musica_playlist')
                 .insert({
                   title: values.title,
                   url: values.url,
@@ -126,11 +126,12 @@ export default function Modal() {
                   <p className='error-feedback'>{props.errors.playlist}</p>
                 ) : null}
 
-                <input
+                <InputBlock
                   name='title'
                   value={props.values.title}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
+                  invalid={props.errors.title}
                   type='text'
                   placeholder='Video Title'
                 />
@@ -138,7 +139,7 @@ export default function Modal() {
                   <p className='error-feedback'>{props.errors.title}</p>
                 ) : null}
 
-                <input
+                <InputBlock
                   name='url'
                   value={props.values.url}
                   onChange={(e) => {
@@ -147,7 +148,9 @@ export default function Modal() {
                     //separando a key da url do Youtube para gerar a thumbnail dinâmica
                     if (name === 'url') {
                       const [url, key] = e.target.value.split('?v=')
-                      url.includes('youtube') ? setThumbnailKey(key) : setThumbnailKey('NotYoutube')
+                      url.includes('youtube.com/watch')
+                        ? setThumbnailKey(key)
+                        : setThumbnailKey('NotYoutube')
                     }
                   }}
                   onBlur={(e) => {
@@ -156,6 +159,7 @@ export default function Modal() {
                       ? (props.values.thumbnail = `https://img.youtube.com/vi/${thumbnailKey}/hqdefault.jpg`)
                       : (props.values.thumbnail = defaultThumbnail)
                   }}
+                  invalid={props.errors.url}
                   type='text'
                   placeholder='URL'
                 />

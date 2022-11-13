@@ -87,7 +87,7 @@ export const StyledModal = styled.section`
       }
     }
 
-    input {
+    /* input {
       width: 100%;
       padding: 0.5rem 1rem;
 
@@ -95,6 +95,7 @@ export const StyledModal = styled.section`
       color: ${(props) => props.theme.colors.textColorBase};
 
       border: 1px solid ${(props) => props.theme.colors.borderBase};
+
       border-radius: 0.25rem;
 
       &::placeholder {
@@ -112,7 +113,7 @@ export const StyledModal = styled.section`
         }
         outline: none;
       }
-    }
+    } */
 
     .error-feedback {
       align-self: flex-start;
