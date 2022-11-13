@@ -12,7 +12,7 @@ export default function Switch() {
       const initialTheme: string = localStorage.getItem('userTheme') as string
       setTheme(initialTheme)
     }
-  }, [])
+  }, [theme, setTheme])
 
   const handleTheme = () => {
     if (theme === 'light') {
