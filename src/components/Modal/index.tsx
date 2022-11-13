@@ -103,7 +103,7 @@ export default function Modal() {
                     value={props.values.playlist}
                     onChange={props.handleChange}
                     onBlur={props.handleBlur}
-                    invalid={props.touched.title && props.errors.playlist}
+                    invalid={props.touched.playlist && props.errors.playlist}
                   />
                 </div>
                 {props.touched.playlist && props.errors.playlist ? (

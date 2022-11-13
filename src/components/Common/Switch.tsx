@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { CiCloudMoon, CiSun } from 'react-icons/ci'
 import { useRecoilState } from 'recoil'
 
 import { ThemeToggleState } from '../../Atoms'
@@ -13,7 +12,7 @@ export default function Switch() {
       const initialTheme: string = localStorage.getItem('userTheme') as string
       setTheme(initialTheme)
     }
-  }, [setTheme])
+  }, [])
 
   const handleTheme = () => {
     if (theme === 'light') {
@@ -34,7 +33,8 @@ export default function Switch() {
     <div
       className='switch'
       onClick={handleTheme}>
-      {theme === 'light' ? <CiSun /> : <CiCloudMoon />}
+      {theme === 'light' ? <span>☀️</span> : <span>🌙</span>}
+      {/* {theme === 'light' ? <CiSun /> : <CiCloudMoon />} */}
     </div>
   )
 }

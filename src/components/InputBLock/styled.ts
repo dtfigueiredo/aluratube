@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { InputBlockProps } from './types'
 
 export const StyledInputBlock = styled.input<InputBlockProps>`

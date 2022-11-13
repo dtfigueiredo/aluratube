@@ -10,7 +10,6 @@ export const StyledInputSelect = styled.select<InputSelectProps>`
   color: ${(props) => props.theme.colors.textColorBase};
 
   border: 1px solid;
-  border-color: yellow;
   border-color: ${(props) =>
     props.invalid ? props.theme.colors.red : props.theme.colors.borderLevel1};
   border-radius: 0.25rem;

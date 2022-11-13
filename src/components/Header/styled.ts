@@ -83,7 +83,7 @@ export const StyleHeaderSection = styled.section`
     }
 
     .switch {
-      font-size: 3rem;
+      font-size: 2rem;
       color: ${(props) => props.theme.colors.textColorBase};
       cursor: pointer;
       transition: all 300ms ease-in-out;
