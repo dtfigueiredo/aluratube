@@ -6,7 +6,9 @@ import * as yup from 'yup'
 
 import { ModalState, ThumbnailKeyState } from '../../Atoms'
 import AddButton from '../AddButton'
+import ErrorFeedback from '../ErrorFeedback'
 import InputBlock from '../InputBLock'
+import InputSelect from '../InputSelect'
 import { StyledModal } from './styled'
 
 //supabaseClient
@@ -95,35 +97,17 @@ export default function Modal() {
 
                 <div className='select-box'>
                   <label htmlFor='playlist'>Playlist: </label>
-                  <select
+
+                  <InputSelect
                     name='playlist'
                     value={props.values.playlist}
                     onChange={props.handleChange}
-                    onBlur={props.handleBlur}>
-                    <option
-                      value=''
-                      label='Escolha a playslit'>
-                      Escolha a playslit
-                    </option>
-                    <option
-                      value='Jogos'
-                      label='Jogos'>
-                      Jogos
-                    </option>
-                    <option
-                      value='Música'
-                      label='Música'>
-                      Música
-                    </option>
-                    <option
-                      value='Estudo'
-                      label='Estudo'>
-                      Estudo
-                    </option>
-                  </select>
+                    onBlur={props.handleBlur}
+                    invalid={props.touched.title && props.errors.playlist}
+                  />
                 </div>
                 {props.touched.playlist && props.errors.playlist ? (
-                  <p className='error-feedback'>{props.errors.playlist}</p>
+                  <ErrorFeedback message={props.errors.playlist} />
                 ) : null}
 
                 <InputBlock
@@ -131,12 +115,12 @@ export default function Modal() {
                   value={props.values.title}
                   onChange={props.handleChange}
                   onBlur={props.handleBlur}
-                  invalid={props.errors.title}
+                  invalid={props.touched.title && props.errors.title}
                   type='text'
                   placeholder='Video Title'
                 />
                 {props.touched.title && props.errors.title ? (
-                  <p className='error-feedback'>{props.errors.title}</p>
+                  <ErrorFeedback message={props.errors.title} />
                 ) : null}
 
                 <InputBlock
@@ -159,12 +143,12 @@ export default function Modal() {
                       ? (props.values.thumbnail = `https://img.youtube.com/vi/${thumbnailKey}/hqdefault.jpg`)
                       : (props.values.thumbnail = defaultThumbnail)
                   }}
-                  invalid={props.errors.url}
+                  invalid={props.touched.url && props.errors.url}
                   type='text'
                   placeholder='URL'
                 />
                 {props.touched.url && props.errors.url ? (
-                  <p className='error-feedback'>{props.errors.url}</p>
+                  <ErrorFeedback message={props.errors.url} />
                 ) : null}
 
                 {thumbnailKey && thumbnailKey !== 'NotYoutube' ? (
@@ -179,7 +163,7 @@ export default function Modal() {
                 <button
                   type='submit'
                   onClick={() => props.handleSubmit()}
-                  disabled={!props.isValid}>
+                  disabled={!props.isValid || props.isSubmitting}>
                   Cadastrar
                 </button>
               </form>

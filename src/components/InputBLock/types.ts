@@ -5,5 +5,5 @@ export type InputBlockProps = {
   onBlur: (e: any) => void
   type: string
   placeholder: string
-  invalid?: string
+  invalid?: boolean | string
 }

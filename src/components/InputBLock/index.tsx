@@ -1,5 +1,5 @@
 import { StyledInputBlock } from './styled'
-import { InputBlockProps } from '../Modal/types'
+import { InputBlockProps } from './types'
 
 export default function InputBlock({
   name,
@@ -10,7 +10,6 @@ export default function InputBlock({
   placeholder,
   invalid,
 }: InputBlockProps) {
-  console.log(invalid)
   return (
     <StyledInputBlock
       name={name}

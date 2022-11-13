@@ -61,59 +61,7 @@ export const StyledModal = styled.section`
         color: ${(props) => props.theme.colors.textColorBase};
         font-weight: 500;
       }
-
-      select {
-        flex: 1;
-        padding: 0.5rem 1rem;
-
-        background-color: ${(props) => props.theme.colors.backgroundLevel1};
-        color: ${(props) => props.theme.colors.textColorBase};
-
-        border: 1px solid ${(props) => props.theme.colors.borderBase};
-        border-radius: 0.25rem;
-
-        &::placeholder {
-          color: ${(props) => props.theme.colors.textColorLevel1};
-        }
-
-        &:focus {
-          border: 1px solid;
-          border-color: ${(props) => props.theme.colors.success};
-        }
-
-        &:focus-visible {
-          outline: none;
-        }
-      }
     }
-
-    /* input {
-      width: 100%;
-      padding: 0.5rem 1rem;
-
-      background-color: ${(props) => props.theme.colors.backgroundLevel1};
-      color: ${(props) => props.theme.colors.textColorBase};
-
-      border: 1px solid ${(props) => props.theme.colors.borderBase};
-
-      border-radius: 0.25rem;
-
-      &::placeholder {
-        color: ${(props) => props.theme.colors.textColorLevel1};
-      }
-
-      &:focus {
-        border: 1px solid;
-        border-color: ${(props) => props.theme.colors.success};
-      }
-
-      &:focus-visible {
-        ::placeholder {
-          color: ${(props) => props.theme.colors.backgroundLevel1};
-        }
-        outline: none;
-      }
-    } */
 
     .error-feedback {
       align-self: flex-start;
