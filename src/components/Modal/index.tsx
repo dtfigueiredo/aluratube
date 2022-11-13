@@ -1,3 +1,4 @@
+import { createClient } from '@supabase/supabase-js'
 import { Formik } from 'formik'
 import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
@@ -7,14 +8,24 @@ import { ModalState, ThumbnailKeyState } from '../../Atoms'
 import AddButton from '../AddButton'
 import { StyledModal } from './styled'
 
+//supabaseClient
+const supabaseUrl = 'https://eoiojeiyljrsrnqjjfcu.supabase.co'
+const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVvaW9qZWl5bGpyc3JucWpqZmN1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjgzMDIyOTksImV4cCI6MTk4Mzg3ODI5OX0.iAgXA2REXyK0T47-5fHIIxTU7IkAB1Sc5HowC7pemaY'
+const supabase = createClient(supabaseUrl, supabaseKey)
+
 export default function Modal() {
   const [isOpen, setIsOpen] = useRecoilState(ModalState)
   const [thumbnailKey, setThumbnailKey] = useRecoilState(ThumbnailKeyState)
 
+  const defaultThumbnail =
+    'https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80'
+
   //validationSchema
   const validationSchema = yup.object().shape({
     title: yup.string().required('Informe o título do video'),
-    url: yup.string().url('Insira uma url válida').required('Informe o link do video'),
+    url: yup.string().url('Insira uma url válida para o video').required('Informe o link do video'),
+    playlist: yup.string().required('Escolha uma playlist'),
   })
 
   //handles para fechar o modal
@@ -58,17 +69,62 @@ export default function Modal() {
           onClick={handleBackdropClick}>
           <Formik
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values)
+            onSubmit={(values, { resetForm }) => {
+              //inserindo no supabase
+              supabase
+                .from('video_playlists')
+                .insert({
+                  title: values.title,
+                  url: values.url,
+                  thumbnail: values.thumbnail,
+                  playlist: values.playlist,
+                })
+                .then((result) => console.log(result))
+              setThumbnailKey('')
+              resetForm()
             }}
             initialValues={{
               title: '',
               url: '',
               thumbnail: '',
+              playlist: '',
             }}>
             {(props) => (
               <form>
                 <span onClick={handleCloseModalClick}>x</span>
+
+                <div className='select-box'>
+                  <label htmlFor='playlist'>Playlist: </label>
+                  <select
+                    name='playlist'
+                    value={props.values.playlist}
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}>
+                    <option
+                      value=''
+                      label='Escolha a playslit'>
+                      Escolha a playslit
+                    </option>
+                    <option
+                      value='Jogos'
+                      label='Jogos'>
+                      Jogos
+                    </option>
+                    <option
+                      value='Música'
+                      label='Música'>
+                      Música
+                    </option>
+                    <option
+                      value='Estudo'
+                      label='Estudo'>
+                      Estudo
+                    </option>
+                  </select>
+                </div>
+                {props.touched.playlist && props.errors.playlist ? (
+                  <p className='error-feedback'>{props.errors.playlist}</p>
+                ) : null}
 
                 <input
                   name='title'
@@ -92,14 +148,13 @@ export default function Modal() {
                     if (name === 'url') {
                       const [url, key] = e.target.value.split('?v=')
                       url.includes('youtube') ? setThumbnailKey(key) : setThumbnailKey('NotYoutube')
-                      console.log(props.values.thumbnail)
                     }
                   }}
                   onBlur={(e) => {
                     props.handleBlur(e)
                     thumbnailKey.length === 11
                       ? (props.values.thumbnail = `https://img.youtube.com/vi/${thumbnailKey}/hqdefault.jpg`)
-                      : ''
+                      : (props.values.thumbnail = defaultThumbnail)
                   }}
                   type='text'
                   placeholder='URL'
@@ -109,7 +164,7 @@ export default function Modal() {
                 ) : null}
 
                 {thumbnailKey && thumbnailKey !== 'NotYoutube' ? (
-                  <div>
+                  <div className='thumbnail'>
                     <img
                       src={`https://img.youtube.com/vi/${thumbnailKey}/hqdefault.jpg`}
                       alt='Thumbnail do novo video'
