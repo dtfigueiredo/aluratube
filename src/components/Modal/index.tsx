@@ -72,7 +72,7 @@ export default function Modal() {
             onSubmit={(values, { resetForm }) => {
               //inserindo no supabase
               supabase
-                .from('musica_playlist')
+                .from(`${values.playlist}_playlist`)
                 .insert({
                   title: values.title,
                   url: values.url,

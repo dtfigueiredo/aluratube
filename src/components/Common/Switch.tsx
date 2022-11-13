@@ -10,8 +10,8 @@ export default function Switch() {
   //useEffect para não quebrar a dom devido ao serverSide rendering do next
   useEffect(() => {
     const initialTheme: string = localStorage.getItem('userTheme') as string
-    // console.log('tema from storage: ', initialTheme)
-    // console.log(window.localStorage)
+    console.log('tema from storage: ', initialTheme)
+    console.log(window.localStorage)
     setTheme(initialTheme)
   }, [setTheme])
 
