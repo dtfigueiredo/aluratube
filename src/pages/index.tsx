@@ -26,9 +26,9 @@ export default function App() {
         banner={profileConfig.banner}
       />
 
-      <Timeline playlists={profileConfig.playlists} />
+      <Timeline />
 
-      <Favorites favorites={profileConfig.favorites} />
+      <Favorites />
     </ThemeProvider>
   )
 }

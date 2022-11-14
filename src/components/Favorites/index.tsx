@@ -1,41 +1,50 @@
+import { createClient } from '@supabase/supabase-js'
+import { useEffect } from 'react'
+import { useRecoilState } from 'recoil'
+
+import { FavoritesPlaylistState } from '../../Atoms'
 import FavoriteChannelCard from '../Common/FavoriteChannelCard'
 import { StyledFavorites } from './styled'
 
 interface FavoriteChannelProps {
   url: string
-  thumb: string
+  thumbnail: string
   name: string
 }
 
-export default function Favorites({ favorites }: any) {
-  const favoriteName: string[] = Object.keys(favorites)
-  const title: string = favoriteName.join('')
+//supabaseClient
+const supabaseUrl = process.env.NEXT_PUBLIC_PROJECT_URL as string
+const supabaseKey = process.env.NEXT_PUBLIC_PROJECT_KEY as string
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+export default function Favorites() {
+  const [favorites, setFavorites] = useRecoilState(FavoritesPlaylistState)
+
+  useEffect(() => {
+    supabase
+      .from('favoritos_playlist')
+      .select('*')
+      .then(({ data }) => {
+        if (!data) return
+        setFavorites(data)
+      })
+  }, [setFavorites])
 
   return (
     <StyledFavorites>
-      {favoriteName.map((favorite) => {
-        const channels = favorites[favorite]
-
-        return (
-          <section
-            key={title}
-            className='favorite-section'>
-            <h2>{title}</h2>
-            <div className='favorites-container'>
-              {channels.map((c: FavoriteChannelProps) => {
-                return (
-                  <FavoriteChannelCard
-                    key={c.url}
-                    url={c.url}
-                    name={c.name}
-                    thumb={c.thumb}
-                  />
-                )
-              })}
-            </div>
-          </section>
-        )
-      })}
+      <h2>favoritos</h2>
+      <section className='favorites-section'>
+        {favorites.map((f: FavoriteChannelProps) => {
+          return (
+            <FavoriteChannelCard
+              key={f.url}
+              url={f.url}
+              thumb={f.thumbnail}
+              name={f.name}
+            />
+          )
+        })}
+      </section>
     </StyledFavorites>
   )
 }

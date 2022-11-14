@@ -5,20 +5,15 @@ export const StyledFavorites = styled.section`
   background-color: ${(props) => props.theme.colors.backgroundBase};
   color: ${(props) => props.theme.colors.textColorBase};
 
-  .favorite-section {
-    margin: 2rem auto;
-
-    h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    &::first-letter {
-      text-transform: uppercase;
-    }
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  &::first-letter {
+    text-transform: uppercase;
   }
 
-  .favorites-container {
-    width: 100%;
+  .favorites-section {
     flex: 1;
     display: flex;
     justify-content: flex-start;

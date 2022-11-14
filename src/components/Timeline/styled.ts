@@ -5,20 +5,16 @@ export const StyleTimeline = styled.section`
   background-color: ${(props) => props.theme.colors.backgroundLevel1};
   color: ${(props) => props.theme.colors.textColorBase};
 
-  .playlist-section {
-    margin: 2rem auto;
+  h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
 
-    h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
     &::first-letter {
       text-transform: uppercase;
     }
   }
 
-  .videos-container {
-    width: 100%;
+  .playlist-section {
     flex: 1;
     display: flex;
     justify-content: flex-start;
@@ -57,7 +53,7 @@ export const StyleTimeline = styled.section`
     height: 225px;
     transition: all 300ms ease-in-out;
 
-    &:hover {
+    &:hover img {
       transform: scale(1.05);
     }
   }
@@ -77,13 +73,11 @@ export const StyleTimeline = styled.section`
     height: 120px;
     object-fit: cover;
     border-radius: 0.25rem;
+    transition: all 300ms ease-in-out;
   }
 
   span {
-    /* white-space: nowrap; */
-    /* overflow-wrap: break-word; */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
+    margin-top: 0.25rem;
     line-height: 1.125rem;
   }
 `

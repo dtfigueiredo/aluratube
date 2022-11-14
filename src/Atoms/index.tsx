@@ -31,3 +31,23 @@ export const ThumbnailKeyState = atom<string>({
   key: 'thumbnailState',
   default: '',
 })
+
+export const MusicPlaylistState = atom<any[]>({
+  key: 'musicPlaylistState',
+  default: [],
+})
+
+export const GamesPlaylistState = atom<any[]>({
+  key: 'gamesPlaylistState',
+  default: [],
+})
+
+export const StudyPlaylistState = atom<any[]>({
+  key: 'studyPlaylistState',
+  default: [],
+})
+
+export const FavoritesPlaylistState = atom<any[]>({
+  key: 'favoritesPlaylistState',
+  default: [],
+})

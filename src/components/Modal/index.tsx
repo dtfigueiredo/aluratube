@@ -12,7 +12,7 @@ import InputSelect from '../InputSelect'
 import { StyledModal } from './styled'
 
 //supabaseClient
-const supabaseUrl = 'https://eoiojeiyljrsrnqjjfcu.supabase.co'
+const supabaseUrl = process.env.NEXT_PUBLIC_PROJECT_URL as string
 const supabaseKey = process.env.NEXT_PUBLIC_PROJECT_KEY as string
 const supabase = createClient(supabaseUrl, supabaseKey)
 
@@ -81,7 +81,8 @@ export default function Modal() {
                   thumbnail: values.thumbnail,
                   playlist: values.playlist,
                 })
-                .then((result) => console.log(result))
+                .then((result) => result.data)
+              location.reload()
               setThumbnailKey('')
               resetForm()
             }}
